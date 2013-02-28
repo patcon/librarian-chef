@@ -339,3 +339,44 @@ What this integration does is whenever you use any `knife` command, it will:
 When you use this integration, any changes you make to anything in the
 `cookbooks/` directory will be ignored by Knife, because Knife won't look in
 that directory for your cookbooks.
+
+How to Contribute
+-----------------
+
+### Running the tests
+
+    $ rspec spec
+
+You will probably need some way to isolate gems. Librarian provides a `Gemfile`,
+so if you want to use bundler, you can prepare the directory with the usual
+`bundle install` and run each command prefixed with the usual `bundle exec`, as:
+
+    $ bundle install
+    $ bundle exec rspec spec
+
+### Installing locally
+
+    $ rake install
+
+You should typically not need to install locally, if you are simply trying to
+patch a bug and test the result on a test case. Instead of installing locally,
+you are probably better served by:
+
+    $ cd $PATH_TO_INFRASTRUCTURE_REPO
+    $ $PATH_TO_LIBRARIAN_CHECKOUT/bin/librarian-chef install [--verbose]
+
+### Reporting Issues
+
+Please include relevant `Cheffile` and `Cheffile.lock` files. Please run the
+`librarian-chef` commands in verbose mode by using the `--verbose` flag, and
+include the verbose output in the bug report as well.
+
+License
+-------
+
+Written by Jay Feldblum.
+
+Copyright (c) 2011-2012 ApplicationsOnline, LLC.
+
+Released under the terms of the MIT License. For further information, please see
+the file `MIT-LICENSE`.
